@@ -1,5 +1,3 @@
-# THIS FILE SHOULD CONTAIN ALL THE SETUP CODE YOU NEED WHEN WORKING WITH ROS 1
-
 # source the "main" setup.bash file of the ROS1 distribution we want to use.
 source /opt/ros/noetic/setup.bash
 
