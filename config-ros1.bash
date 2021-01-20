@@ -6,7 +6,7 @@ export ROS_HOME=$HOME/programming/ROS
 alias roshome="cd $ROS_HOME"
 
 # source my personal workspaces
-source $ROS_HOME/devel/devel/setup.bash
+source $ROS_HOME/commons/devel/setup.bash
 
 # Finally, make sure that every time we open a console, we are greeted with a
 # message informing us about the version we are using
