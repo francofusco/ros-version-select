@@ -29,10 +29,33 @@ touch_empty_config() {
 }
 
 
+# Allows to auto-detect changes in the config-rosX.bash files.
+# It takes one parameter: the number of the ROS version (either 1 or 2).
+add_date_info() {
+  source_file="$ROS_VERSION_SELECT_DIR/config-ros$1.bash"
+  date=$(stat -c %y "$source_file")
+  echo "ROS_VERSION_SELECT_MODIFICATION_DATE=\"$date\"" >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+  echo "ROS_VERSION_SELECT_SOURCE_FILE=\"$source_file\"" >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+  echo "update_config() { activate_rosX_no_cleanup $1; }" >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+  cat $ROS_VERSION_SELECT_DIR/date-utils.bash >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+}
+
+
 # Internal function: it simply replaces the config file with an "empty" file.
 deactivate_ros_no_cleanup() {
   touch_empty_config
   echo 'echo "All ROS versions have been deactivated"' >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+}
+
+
+# Internal function: it creates the config file for the given ROS version.
+# It takes one parameter: the number of the ROS version (either 1 or 2).
+activate_rosX_no_cleanup() {
+  touch_empty_config
+  add_date_info $1
+  echo ""
+  echo ""
+  cat $ROS_VERSION_SELECT_DIR/config-ros$1.bash >> $ROS_VERSION_SELECT_DIR/config-ros.bash
 }
 
 
@@ -45,16 +68,14 @@ deactivate_ros() {
 
 # Function to be executed when switching to ROS1
 activate_ros1() {
-  touch_empty_config
-  cat $ROS_VERSION_SELECT_DIR/config-ros1.bash >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+  activate_rosX_no_cleanup 1
   cleanup_command
 }
 
 
 # Function to be executed when switching to ROS2
 activate_ros2() {
-  touch_empty_config
-  cat $ROS_VERSION_SELECT_DIR/config-ros2.bash >> $ROS_VERSION_SELECT_DIR/config-ros.bash
+  activate_rosX_no_cleanup 2
   cleanup_command
 }
 
