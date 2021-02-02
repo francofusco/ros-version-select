@@ -25,12 +25,12 @@ Instead, they just execute the setup required to work with either version,
 In your `~/.bashrc` file, add the following:
 
 ```
-export ROS_VERSION_SELECT_DIR=/path/to/this/repository
-source $ROS_VERSION_SELECT_DIR/ros-version-select.bash
+export ROS_VERSION_SELECT_DIR="/path/to/this/repository"
+source "$ROS_VERSION_SELECT_DIR/ros-version-select.bash"
 ```
 
 Make sure to properly update the content of `ROS_VERSION_SELECT_DIR`! It should
-look like `ROS_VERSION_SELECT_DIR=$HOME/programming/ros-version-select`, but of
+look like `ROS_VERSION_SELECT_DIR="$HOME/ros-version-select"`, but of
 course it will depend on where you cloned this repo.
 
 Now, edit the `config-ros1.bash` and `config-ros2.bash` files. Each of them
