@@ -6,6 +6,7 @@ export ROS_WS_ROOT=$HOME/programming/ROS
 alias roshome="cd $ROS_WS_ROOT"
 
 # source my personal workspaces
+source $ROS_WS_ROOT/flightmare_ws/devel/setup.bash
 source $ROS_WS_ROOT/commons/devel/setup.bash
 source $ROS_WS_ROOT/active_workspace/devel/setup.bash
 
