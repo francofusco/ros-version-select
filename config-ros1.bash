@@ -7,8 +7,10 @@ alias roshome="cd $ROS_WS_ROOT"
 
 # source my personal workspaces
 source $ROS_WS_ROOT/flightmare_ws/devel/setup.bash
-source $ROS_WS_ROOT/commons/devel/setup.bash
 source $ROS_WS_ROOT/active_workspace/devel/setup.bash
+
+# As detailed in flightmare (https://github.com/uzh-rpg/flightmare/wiki/Install-with-ROS#install-flightmare)
+export FLIGHTMARE_PATH="$ROS_WS_ROOT/flightmare_ws/src/flightmare"
 
 # Finally, make sure that every time we open a console, we are greeted with a
 # message informing us about the version we are using
