@@ -7,6 +7,7 @@ alias roshome="cd $ROS_WS_ROOT"
 
 # source my personal workspaces
 source $ROS_WS_ROOT/flightmare_ws/devel/setup.bash
+source $ROS_WS_ROOT/qualisys_ws/devel/setup.bash
 source $ROS_WS_ROOT/active_workspace/devel/setup.bash
 
 # As detailed in flightmare (https://github.com/uzh-rpg/flightmare/wiki/Install-with-ROS#install-flightmare)
